@@ -1,0 +1,11 @@
+.main-content {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 70px;
+  background: #12171B;
+  box-sizing: border-box
+}
+
+.header-search {
+  margin: 0 0 15px 0;
+}

@@ -7,7 +7,9 @@ export const getByName = (movieName, paramsObj = {}) => {
   const queryParams = objectToQueryString(paramsObj)
 
   return request((baseUrl, apiKey) => {
-    return window.fetch(`${baseUrl}/?t=${movieName}&apikey=${apiKey}&${queryParams}`)
+    return window.fetch(`${baseUrl}/?s=${movieName}&apikey=${apiKey}&${queryParams}`)
       .then(response => response.json())
   })
 }
+
+export default {}
