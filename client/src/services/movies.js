@@ -1,15 +1,14 @@
 import config from '../utils/config'
+import request from '../utils/request'
 import objectToQueryString from '../utils/objectToQueryString'
 
-const request = config('http://www.omdbapi.com')
+const http = config('http://www.omdbapi.com')
 
 export const getByName = (movieName, paramsObj = {}) => {
   const queryParams = objectToQueryString(paramsObj)
 
-  return request((baseUrl, apiKey) => {
-    return window.fetch(`${baseUrl}/?s=${movieName}&apikey=${apiKey}&${queryParams}`)
-      .then(response => response.json())
-  })
+  return http((baseUrl, apiKey) =>
+    request(`${baseUrl}/?s=${movieName}&apiKey=${apiKey}&${queryParams}`))
 }
 
 export default {}
