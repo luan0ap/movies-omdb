@@ -1,9 +1,15 @@
-.main-content {
+.app-content {
   width: 100vw;
-  height: 100vh;
-  padding: 20px 70px;
-  background: #12171B;
-  box-sizing: border-box
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1024px) {
+  .app-content {
+    padding: 20px 70px
+  }
 }
 
 .header-search {
