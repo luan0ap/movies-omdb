@@ -12,7 +12,14 @@
   opacity: .8;
 }
 
+.card-content > .icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .card-post > .card-content {
+  position: relative;
   max-width: 300px;
   flex-direction: column;
   justify-content: flex-end;
@@ -26,6 +33,7 @@
 @media (pointer: fine) {
   .card-post > .card-content {
     opacity: 0;
+    transition-duration: .2s
   }
 
   .card-post:hover > .card-content {

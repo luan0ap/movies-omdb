@@ -49,7 +49,7 @@ function Home () {
         <MoviesList>
           {
             moviesList.map(({ Title, Year, Poster, imdbID }) => (
-              <Card key={imdbID} title={Title} year={Year} poster={Poster} />
+              <Card key={imdbID} title={Title} year={Year} poster={Poster} isLiked={true}/>
             ))
           }
         </MoviesList>
