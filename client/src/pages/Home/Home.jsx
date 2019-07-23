@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
-import useDebounce from '../../mixins/DebounceInput'
-import InputBox from '../../components/common/InputBox/InputBox'
-import MoviesList from '../../components/Movie/List/List'
-import Card from '../../components/Movie/Card/Card'
+import useDebounce from 'mixins/DebounceInput'
+import InputBox from 'components/common/InputBox/InputBox'
+import MoviesList from 'components/Movie/List/List'
+import Card from 'components/Movie/Card/Card'
 
-import { getByName } from '../../services/movies'
+import { getByName } from 'services/movies'
 
 import './Home.css'
-import logo from '../../assets/logos/logo.svg'
+import logo from 'assets/logos/logo.svg'
 
 function Home () {
   const [movieName, setMovieName] = useState('')

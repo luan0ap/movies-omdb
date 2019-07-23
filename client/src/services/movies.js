@@ -1,6 +1,6 @@
-import config from '../utils/config'
-import request from '../utils/request'
-import objectToQueryString from '../utils/objectToQueryString'
+import config from 'utils/config'
+import request from 'utils/request'
+import objectToQueryString from 'utils/objectToQueryString'
 
 const http = config('http://www.omdbapi.com')
 

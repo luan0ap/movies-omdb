@@ -1,6 +1,6 @@
 import React from 'react'
 import './InputBox.css'
-import searchIcon from '../../../assets/icons/icon-magnifier-disabled.svg'
+import searchIcon from 'assets/icons/icon-magnifier-disabled.svg'
 
 function InputBox ({ handlerChange, val }) {
   return (

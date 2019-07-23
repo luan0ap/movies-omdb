@@ -1,7 +1,7 @@
 import React from 'react'
 
-import iconHeart from '../../../assets/icons/icon-heart-white.svg'
-import iconHeartFull from '../../../assets/icons/icon-heart-full.svg'
+import iconHeart from 'assets/icons/icon-heart-white.svg'
+import iconHeartFull from 'assets/icons/icon-heart-full.svg'
 import './Card.css'
 
 function Card ({ title, year, poster, isLiked }) {
