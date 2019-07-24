@@ -13,17 +13,17 @@ import logo from 'assets/logos/logo.svg'
 function Home () {
   const [movieName, setMovieName] = useState('')
   const [moviesList, setMoviesList] = useState([])
-  const [isSearching, setIsSearching] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const debouncedSearchTerm = useDebounce(movieName, 500)
 
   useEffect(
     () => {
       if (debouncedSearchTerm) {
-        setIsSearching(true)
+        setIsLoading(true)
 
         getByName(debouncedSearchTerm).then(results => {
-          setIsSearching(false)
+          setIsLoading(false)
 
           const data = results.Error ? [] : results.Search
 
@@ -46,7 +46,7 @@ function Home () {
 
       <main className='main-content'>
         <InputBox handlerChange={handler} val={movieName} />
-        <MoviesList>
+        <MoviesList isLoading={isLoading}>
           {
             moviesList.map(({ Title, Year, Poster, imdbID }) => (
               <Card key={imdbID} title={Title} year={Year} poster={Poster} isLiked={true}/>

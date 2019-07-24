@@ -1,9 +1,16 @@
-.app-content {
-  width: 100vw;
+.app-content,
+.app-content > .main-content {
   display: flex;
   flex-direction: column;
+}
+
+.app-content {
   padding: 20px;
   box-sizing: border-box;
+}
+
+.main-content > img {
+  justify-self: flex-end
 }
 
 @media screen and (min-width: 1024px) {
@@ -11,6 +18,7 @@
     padding: 20px 70px
   }
 }
+
 
 .header-search {
   margin: 0 0 15px 0;

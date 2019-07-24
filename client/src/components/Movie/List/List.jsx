@@ -1,10 +1,12 @@
 import React from 'react'
 import './List.css'
 
-function List ({ children }) {
+import Loading from 'components/common/Loading/Loading'
+
+function List ({ children, isLoading }) {
   return (
     <section className='list-content'>
-      {children}
+      {isLoading ? <Loading customClasses={['loading']} /> : children}
     </section>
   )
 }

@@ -1,11 +1,14 @@
-.search-container {
+.search-container,
+.icon-search {
   display: flex;
+}
+
+.search-container {
   flex-direction: row;
   height: 40px;
 }
 
 .icon-search {
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
