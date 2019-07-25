@@ -4,6 +4,7 @@ import useDebounce from 'mixins/DebounceInput'
 import InputBox from 'components/common/InputBox/InputBox'
 import MoviesList from 'components/Movie/List/List'
 import Card from 'components/Movie/Card/Card'
+import EmptyBox from 'components/common/EmptyBox/EmptyBox'
 
 import { getByName } from 'services/movies'
 
@@ -46,13 +47,17 @@ function Home () {
 
       <main className='main-content'>
         <InputBox handlerChange={handler} val={movieName} />
-        <MoviesList isLoading={isLoading}>
-          {
-            moviesList.map(({ Title, Year, Poster, imdbID }) => (
-              <Card key={imdbID} title={Title} year={Year} poster={Poster} isLiked={true}/>
-            ))
-          }
-        </MoviesList>
+        {
+          movieName === ''
+          ? <EmptyBox />
+          : <MoviesList isLoading={isLoading}>
+            {
+              moviesList.map(({ Title, Year, Poster, imdbID }) => (
+                <Card key={imdbID} title={Title} year={Year} poster={Poster} isLiked={true}/>
+              ))
+            }
+          </MoviesList>
+        }
       </main>
     </div>
   )

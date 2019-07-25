@@ -1,0 +1,27 @@
+.empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.empty-card > .illustration {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.empty-card > .intro, 
+.empty-card > .offer {
+  margin: 5px 0
+}
+
+.empty-card > .intro {
+  color: #fefefe;
+  font-size: 1.4em
+}
+
+.empty-card > .offer {
+  color: #788998;
+  font-size: 1em
+}

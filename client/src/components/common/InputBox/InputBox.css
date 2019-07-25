@@ -5,6 +5,10 @@
 
 .search-container {
   flex-direction: row;
+}
+
+.search-container > .icon-search,
+.search-container > .input {
   height: 40px;
 }
 

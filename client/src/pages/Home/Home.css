@@ -1,16 +1,14 @@
 .app-content,
 .app-content > .main-content {
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between
 }
 
 .app-content {
   padding: 20px;
   box-sizing: border-box;
-}
-
-.main-content > img {
-  justify-self: flex-end
 }
 
 @media screen and (min-width: 1024px) {
