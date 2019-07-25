@@ -6,6 +6,13 @@
   border-radius: 5px;
 }
 
+@media screen and (min-width: 576px) {
+  .card-post,
+  .card-post > .card-content {
+    height: 250px;
+  } 
+}
+
 .card-post {
   justify-content: center;
   align-items: center;

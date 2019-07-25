@@ -6,7 +6,7 @@ import MoviesList from 'components/Movie/List/List'
 import Card from 'components/Movie/Card/Card'
 import EmptyBox from 'components/common/EmptyBox/EmptyBox'
 
-import { getByName } from 'services/movies'
+import { getAllByName } from 'services/movies'
 
 import './Home.css'
 import logo from 'assets/logos/logo.svg'
@@ -23,7 +23,7 @@ function Home () {
       if (debouncedSearchTerm) {
         setIsLoading(true)
 
-        getByName(debouncedSearchTerm).then(results => {
+        getAllByName(debouncedSearchTerm).then(results => {
           setIsLoading(false)
 
           const data = results.Error ? [] : results.Search
@@ -36,6 +36,7 @@ function Home () {
   )
 
   const handler = ({ target }) => {
+    setMoviesList([])
     setMovieName(target.value)
   }
 
@@ -48,8 +49,8 @@ function Home () {
       <main className='main-content'>
         <InputBox handlerChange={handler} val={movieName} />
         {
-          movieName === ''
-          ? <EmptyBox />
+          movieName === '' || moviesList.length === 0
+          ? <EmptyBox customClasses={['empty']} />
           : <MoviesList isLoading={isLoading}>
             {
               moviesList.map(({ Title, Year, Poster, imdbID }) => (

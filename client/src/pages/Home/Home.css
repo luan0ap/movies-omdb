@@ -1,9 +1,7 @@
 .app-content,
 .app-content > .main-content {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
 }
 
 .app-content {
@@ -17,6 +15,9 @@
   }
 }
 
+.main-content > .empty {
+  margin-top: 25vh
+}
 
 .header-search {
   margin: 0 0 15px 0;

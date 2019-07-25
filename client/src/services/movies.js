@@ -4,7 +4,7 @@ import objectToQueryString from 'utils/objectToQueryString'
 
 const http = config('http://www.omdbapi.com')
 
-export const getByName = (movieName, paramsObj = {}) => {
+export const getAllByName = (movieName, paramsObj = {}) => {
   const queryParams = objectToQueryString(paramsObj)
 
   return http((baseUrl, apiKey) =>
