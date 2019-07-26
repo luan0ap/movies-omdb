@@ -7,6 +7,7 @@ import Card from 'components/Movie/Card/Card'
 import EmptyBox from 'components/common/EmptyBox/EmptyBox'
 
 import { getAllByName } from 'services/movies'
+import LikedMoviesStorage from 'services/moviesLiked'
 
 import './Home.css'
 import logo from 'assets/logos/logo.svg'
@@ -24,11 +25,10 @@ function Home () {
         setIsLoading(true)
 
         getAllByName(debouncedSearchTerm).then(results => {
-          setIsLoading(false)
-
-          const data = results.Error ? [] : results.Search
+          const data = results.Error ? [] : results.Search.map(movie => ({ ...movie, Liked: LikedMoviesStorage.has(movie.imdbID) }))
 
           setMoviesList(data)
+          setIsLoading(false)
         })
       }
     },
@@ -38,6 +38,10 @@ function Home () {
   const handler = ({ target }) => {
     setMoviesList([])
     setMovieName(target.value)
+  }
+
+  const handleLikeMovie = (title, imdbID) => {
+    LikedMoviesStorage.has(imdbID) ? LikedMoviesStorage.removeByImdbId(imdbID) : LikedMoviesStorage.add({ title, imdbID })
   }
 
   return (
@@ -53,8 +57,16 @@ function Home () {
           ? <EmptyBox customClasses={['empty']} />
           : <MoviesList isLoading={isLoading}>
             {
-              moviesList.map(({ Title, Year, Poster, imdbID }) => (
-                <Card key={imdbID} title={Title} year={Year} poster={Poster} isLiked={true}/>
+              moviesList.map(({ Title, Year, Poster, imdbID, Liked }) => (
+                <Card
+                  key={imdbID}
+                  handleLike={handleLikeMovie}
+                  imdbID={imdbID}
+                  title={Title}
+                  year={Year}
+                  poster={Poster}
+                  isLiked={Liked}
+                />
               ))
             }
           </MoviesList>
