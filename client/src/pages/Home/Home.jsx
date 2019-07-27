@@ -16,7 +16,7 @@ function Home () {
   const [movieName, setMovieName] = useState('')
   const [moviesList, setMoviesList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+  const [hasError, setHasError] = useState(false)
   const debouncedSearchTerm = useDebounce(movieName, 500)
 
   useEffect(
@@ -24,10 +24,22 @@ function Home () {
       if (debouncedSearchTerm) {
         setIsLoading(true)
 
-        getAllByName(debouncedSearchTerm).then(results => {
-          const data = results.Error ? [] : results.Search.map(movie => ({ ...movie, Liked: LikedMoviesStorage.has(movie.imdbID) }))
+        getAllByName(debouncedSearchTerm).then((results) => {
+          const handleResults = {
+            Error () {
+              setHasError(true)
+              setMoviesList([])
+            },
 
-          setMoviesList(data)
+            Search () {
+              setHasError(false)
+              setMoviesList(results.Search.map(movie => ({ ...movie, Liked: LikedMoviesStorage.has(movie.imdbID) })))
+            }
+          }
+
+          const resultsType = results.Search ? 'Search' : 'Error'
+
+          handleResults[resultsType]()
           setIsLoading(false)
         })
       }
@@ -37,6 +49,7 @@ function Home () {
 
   const handler = ({ target }) => {
     setMoviesList([])
+    setHasError(false)
     setMovieName(target.value)
   }
 
@@ -53,23 +66,25 @@ function Home () {
       <main className='main-content'>
         <InputBox handlerChange={handler} val={movieName} />
         {
-          movieName === '' || moviesList.length === 0
-          ? <EmptyBox customClasses={['empty']} />
-          : <MoviesList isLoading={isLoading}>
-            {
-              moviesList.map(({ Title, Year, Poster, imdbID, Liked }) => (
-                <Card
-                  key={imdbID}
-                  handleLike={handleLikeMovie}
-                  imdbID={imdbID}
-                  title={Title}
-                  year={Year}
-                  poster={Poster}
-                  isLiked={Liked}
-                />
-              ))
-            }
-          </MoviesList>
+          movieName === ''
+            ? <EmptyBox customClasses={['empty']} />
+            : <MoviesList isLoading={isLoading}>
+              {
+                hasError
+                  ? <div className='empty'><p>Sorry! Movie not found</p></div>
+                  : moviesList.map(({ Title, Year, Poster, imdbID, Liked }) => (
+                    <Card
+                      key={imdbID}
+                      handleLike={handleLikeMovie}
+                      imdbID={imdbID}
+                      title={Title}
+                      year={Year}
+                      poster={Poster}
+                      isLiked={Liked}
+                    />
+                  ))
+              }
+            </MoviesList>
         }
       </main>
     </div>

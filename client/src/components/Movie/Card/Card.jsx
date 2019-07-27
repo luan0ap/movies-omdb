@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 
 import iconHeart from 'assets/icons/icon-heart-white.svg'
 import iconHeartFull from 'assets/icons/icon-heart-full.svg'
+
 import './Card.css'
 
 function Card ({ imdbID, title, year, poster, isLiked, handleLike }) {
   const [isCardLiked, setIsCardLiked] = useState(isLiked)
   const cardStyle = {
-    background: `url(${poster}) no-repeat center`
+    background: `url(${poster}) no-repeat center`,
+    'backgroundColor': '#be3232'
   }
 
   const handle = () => {
