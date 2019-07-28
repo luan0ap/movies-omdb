@@ -7,7 +7,7 @@ import Card from 'components/Movie/Card/Card'
 import EmptyBox from 'components/common/EmptyBox/EmptyBox'
 
 import { getAllByName } from 'services/movies'
-import LikedMoviesStorage from 'services/moviesLikedStorage'
+import LikedMoviesStorage from 'services/moviesLiked'
 
 import './Home.css'
 import logo from 'assets/logos/logo.svg'
@@ -26,18 +26,18 @@ function Home () {
 
         getAllByName(debouncedSearchTerm).then((results) => {
           const handleResults = {
-            error () {
+            Error () {
               setHasError(true)
               setMoviesList([])
             },
 
-            content () {
+            Search () {
               setHasError(false)
               setMoviesList(results.Search.map(movie => ({ ...movie, Liked: LikedMoviesStorage.has(movie.imdbID) })))
             }
           }
 
-          const resultsType = results.Search ? 'content' : 'error'
+          const resultsType = results.Search ? 'Search' : 'Error'
 
           handleResults[resultsType]()
           setIsLoading(false)
@@ -71,7 +71,7 @@ function Home () {
             : <MoviesList isLoading={isLoading}>
               {
                 hasError
-                  ? <div className='notfound'><p>Sorry! Movie not found</p></div>
+                  ? <div className='empty'><p>Sorry! Movie not found</p></div>
                   : moviesList.map(({ Title, Year, Poster, imdbID, Liked }) => (
                     <Card
                       key={imdbID}

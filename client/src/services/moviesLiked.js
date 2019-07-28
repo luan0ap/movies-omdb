@@ -19,7 +19,7 @@ const has = (id) => {
   return moviesLikedList.some(({ imdbID }) => imdbID === id)
 }
 
-const getAll = () => moviesLikedStorage.get()
+const getAll = () => moviesLikedStorage.get() || []
 
 export default {
   removeByImdbId,

@@ -5,7 +5,7 @@
   margin: 30px 0;
 }
 
-.list-content > .notfound  {
+.list-content > .empty  {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -17,7 +17,7 @@
     grid-template-columns: repeat(3, 1fr)
   }
 
-  .list-content > .notfound  {
+  .list-content > .empty  {
     grid-column: 2 / 3
   }
 }
@@ -27,7 +27,7 @@
     grid-template-columns: repeat(4, 1fr)
   }
 
-  .list-content > .notfound  {
+  .list-content > .empty  {
     grid-column: 2 / 4
   }
 }
@@ -37,7 +37,7 @@
     grid-template-columns: repeat(6, 1fr)
   }
 
-  .list-content > .notfound  {
+  .list-content > .empty  {
     grid-column: 3 / 5
   }
 }
