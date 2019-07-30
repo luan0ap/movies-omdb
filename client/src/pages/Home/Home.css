@@ -1,24 +1,8 @@
-.app-content,
-.app-content > .main-content {
+.main-content {
   display: flex;
   flex-direction: column;
 }
 
-.app-content {
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-@media screen and (min-width: 1024px) {
-  .app-content {
-    padding: 20px 70px
-  }
-}
-
 .main-content > .empty {
   margin-top: 25vh
-}
-
-.header-search {
-  margin: 0 0 15px 0;
 }

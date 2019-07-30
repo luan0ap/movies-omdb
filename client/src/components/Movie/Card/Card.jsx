@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import iconHeart from 'assets/icons/icon-heart-white.svg'
 import iconHeartFull from 'assets/icons/icon-heart-full.svg'
 
 import './Card.css'
 
-function Card ({ imdbID, title, year, poster, isLiked, handleLike }) {
+function Card ({ imdbID, title, year, poster, to, isLiked, handleLike }) {
   const [isCardLiked, setIsCardLiked] = useState(isLiked)
   const cardStyle = {
     background: `url(${poster}) no-repeat center`,
@@ -26,9 +27,14 @@ function Card ({ imdbID, title, year, poster, isLiked, handleLike }) {
           alt='Icon favorite movie'
           onClick={handle}
         />
-
-        <span className='title'>{title}</span>
-        <span className='year'>{year}</span>
+        <Link
+          key={imdbID}
+          to={to}
+          className='movie-link'
+        >
+          <span className='title'>{title}</span><br />
+          <span className='year'>{year}</span>
+        </Link>
       </div>
     </div>
   )

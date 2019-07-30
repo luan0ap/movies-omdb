@@ -7,7 +7,7 @@ const add = (movieInfo) => {
   moviesLikedStorage.set([...moviesLikedList, { ...movieInfo }])
 }
 
-const removeByImdbId = (imdbIdMovie) => {
+const remove = (imdbIdMovie) => {
   const moviesLikedList = moviesLikedStorage.get()
   const moviesListUpdated = moviesLikedList.filter(({ imdbID }) => imdbID !== imdbIdMovie)
 
@@ -19,10 +19,10 @@ const has = (id) => {
   return moviesLikedList.some(({ imdbID }) => imdbID === id)
 }
 
-const getAll = () => moviesLikedStorage.get() || []
+const getAll = () => moviesLikedStorage.get()
 
 export default {
-  removeByImdbId,
+  remove,
   getAll,
   has,
   add
