@@ -1,0 +1,26 @@
+.movie-about,
+.movie-time,
+.movie-extra {
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.movie-about > .movie-info,
+.movie-about > .movie-poster {
+  width: 50%
+}
+
+.movie-info >.movie-time {
+  opacity: .7
+}
+
+.movie-time > .-separator_disc + .-separator_disc:before {
+  content: '*';
+  margin: 0 10px
+}
+
+.movie-info > .title {
+  font-size: 3em
+}

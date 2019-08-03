@@ -1,0 +1,35 @@
+.chip-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 35px;
+  margin: 0;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.chip-box > .icon-box,
+.chip-box > .label-box {
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center
+}
+
+.chip-box > .icon-box {
+  padding: 10px;
+  border-radius: 3px 0 0 3px
+}
+
+.icon-box > .icon {
+  height: inherit;
+  width: 100%
+}
+
+.chip-box > .label-box {
+  border-radius: 0 3px 3px 0;
+  padding: 7px;
+}
+
+.label-box > .label {
+  font-size: .8em
+}
