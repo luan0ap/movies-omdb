@@ -1,13 +1,15 @@
 .movie-about,
 .movie-info > .movie-time,
-.movie-info > .movie-extra {
+.movie-info > .movie-extra,
+.movie-info > .movie-members {
   display: flex;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif
 }
 
 .movie-about,
-.movie-info > .movie-extra {
+.movie-info > .movie-extra,
+.movie-info > .movie-members {
   flex-direction: column;
   align-content: space-between
 }
@@ -21,7 +23,8 @@
 }
 
 @media screen and (min-width: 576px) {
-  .movie-info > .movie-extra {
+  .movie-info > .movie-extra,
+  .movie-info > .movie-members {
     flex-direction: row;
     justify-content: space-between;
   }
