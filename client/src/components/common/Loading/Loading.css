@@ -1,48 +1,32 @@
-:root {
-  --loading-color: #fff  
-}
-
 .loading-dots {
-  width: 3em;
-  height: 3em;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
+  width: 3.5em;
+  display: flex;
+  flex-flow: row nowrap;
   align-items: center;
-  justify-self: center
+  justify-content: space-between;
 }
 
 .loading-dots > .dots {
-  width: 0.5em;
-  height: 0.5em;
-  background-color: var(--loading-color);
+  width: 0.6em;
+  height: 0.6em;
   border-radius: 50%;
-  animation: fade 1.5s alternate ease-in-out infinite;
+  background-color: #fff;
+  animation: fade 0.8s ease-in-out alternate infinite;
 }
 
-.loading-dots > .dots:nth-of-type(2),
-.loading-dots > .dots:nth-of-type(4) {
-  animation-delay: 0.25s;
+.loading-dots > .dots:nth-of-type(1) {
+  animation-delay: -0.4s;
 }
 
-.loading-dots > .dots:nth-of-type(3),
-.loading-dots > .dots:nth-of-type(5),
-.loading-dots > .dots:nth-of-type(7) {
-  animation-delay: 0.5s;
-}
-
-.loading-dots > .dots:nth-of-type(6),
-.loading-dots > .dots:nth-of-type(8) {
-  animation-delay: 0.75s;
-}
-
-.loading-dots > .dots:nth-of-type(9) {
-  animation-delay: 1s;
+.loading-dots .dots:nth-of-type(2) {
+  animation-delay: -0.2s;
 }
 
 @keyframes fade {
+  from {
+    opacity: 1;
+  }
   to {
-    opacity: 0.2;
+    opacity: 0;
   }
 }

@@ -1,26 +1,47 @@
 .movie-about,
-.movie-time,
-.movie-extra {
+.movie-info > .movie-time,
+.movie-info > .movie-extra {
   display: flex;
-  flex-direction: row;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif
 }
 
-.movie-about > .movie-info,
-.movie-about > .movie-poster {
-  width: 50%
+.movie-about,
+.movie-info > .movie-extra {
+  flex-direction: column;
+  align-content: space-between
 }
 
-.movie-info >.movie-time {
-  opacity: .7
+.movie-info > .movie-extra {
+  margin: 50px 0;
+}
+
+.movie-extra > .extra {
+  margin: 10px 0
+}
+
+@media screen and (min-width: 576px) {
+  .movie-info > .movie-extra {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .movie-extra > .extra {
+    margin: 0
+  }
+}
+
+.movie-info > .movie-time {
+  opacity: .7;
+  margin: 30px 0 0 0
 }
 
 .movie-time > .-separator_disc + .-separator_disc:before {
-  content: '*';
-  margin: 0 10px
+  content: "\00b7";
 }
 
 .movie-info > .title {
-  font-size: 3em
+  margin: 10px 0 30px 0;
+  font-size: 3em;
+  font-weight: 200
 }
