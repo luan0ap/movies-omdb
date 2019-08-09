@@ -11,4 +11,11 @@ export const getAllByName = (movieName, paramsObj = {}) => {
     request(`${baseUrl}/?s=${movieName}&apiKey=${apiKey}&${queryParams}`))
 }
 
+export const get = (id, paramsObj = {}) => {
+  const queryParams = objectToQueryString(paramsObj)
+
+  return http((baseUrl, apiKey) =>
+    request(`${baseUrl}/?i=${id}&apiKey=${apiKey}&${queryParams}`))
+}
+
 export default {}

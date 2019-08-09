@@ -16,7 +16,7 @@ function App () {
         </header>
 
         <Route exact path='/' component={Home} />
-        <Route exact path='/movie/:imdbId' component={Details} />
+        <Route exact path='/movie/:imdbID' component={Details} />
       </div>
     </Router>
   )

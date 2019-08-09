@@ -1,5 +1,10 @@
 .card-list > .list-item {
   list-style: none;
   padding: 0;
-  margin: 0
+  margin: 0;
+  line-height: 1.3em;
+}
+
+.card-list > .title {
+  opacity: .7;
 }

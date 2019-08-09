@@ -4,7 +4,14 @@
 .movie-info > .movie-members {
   display: flex;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (min-width: 960px) {
+  .movie-about > .movie-info,
+  .movie-about > .movie-poster {
+    width: 45%
+  }
 }
 
 .movie-about,
@@ -14,15 +21,8 @@
   align-content: space-between
 }
 
-.movie-info > .movie-extra {
-  margin: 50px 0;
-}
-
-.movie-extra > .extra {
-  margin: 10px 0
-}
-
 @media screen and (min-width: 576px) {
+  .movie-about,
   .movie-info > .movie-extra,
   .movie-info > .movie-members {
     flex-direction: row;
@@ -39,12 +39,55 @@
   margin: 30px 0 0 0
 }
 
-.movie-time > .-separator_disc + .-separator_disc:before {
-  content: "\00b7";
-}
-
 .movie-info > .title {
   margin: 10px 0 30px 0;
   font-size: 3em;
   font-weight: 200
+}
+
+.movie-about,
+.movie-about > .movie-info {
+  z-index: 9
+}
+
+.movie-info > .movie-description {
+  line-height: 1.5em
+}
+
+.movie-poster > .poster {
+  z-index: 1;
+  position: fixed;
+  opacity: .1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 10px
+}
+
+@media screen and (min-width: 960px) {
+  .movie-poster > .poster {
+    position: static;
+    opacity: 1;
+    width: 100%;
+    height: 100%
+  }
+}
+
+
+.movie-info > .movie-extra {
+  margin: 50px 0;
+}
+
+.movie-description > .title {
+  opacity: .7;
+}
+
+.movie-extra > .extra {
+  margin: 10px 0
+}
+
+.movie-time > .-separator_disc + .-separator_disc:before {
+  content: "\00b7";
+  margin: 0 10px
 }
