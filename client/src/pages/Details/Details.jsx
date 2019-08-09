@@ -34,7 +34,8 @@ function Detail ({ match }) {
         imdbRating = '',
         Actors = '',
         Genre = '',
-        Director = ''
+        Director = '',
+        Plot,
       } = response
 
       const data = {
@@ -46,7 +47,8 @@ function Detail ({ match }) {
         rating: (Ratings.find(({ Source }) => Source === 'Internet Movie Database') || { Value: '0/0' }).Value,
         actors: Actors.split(' '),
         genres: Genre.split(' '),
-        directors: Director.split(' ')
+        directors: Director.split(' '),
+        plot: Plot
       }
 
       setMovieData(data)
@@ -101,7 +103,7 @@ function Detail ({ match }) {
             <div className='movie-description'>
               <h4 className='title'>Plot</h4>
               <p>
-                {movieData.Plot}
+                {movieData.plot}
               </p>
             </div>
 
