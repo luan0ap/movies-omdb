@@ -17,8 +17,7 @@
     grid-template-columns: repeat(3, 1fr)
   }
 
-  .grid-content > .empty,
-  .grid-content > .loading {
+  .grid-content > .empty {
     grid-column: 2 / 3
   }
 }
@@ -28,8 +27,7 @@
     grid-template-columns: repeat(4, 1fr)
   }
 
-  .grid-content > .empty,
-  .grid-content > .loading  {
+  .grid-content > .empty {
     grid-column: 2 / 4
   }
 }
@@ -39,8 +37,7 @@
     grid-template-columns: repeat(6, 1fr)
   }
 
-  .grid-content > .empty,
-  .grid-content > .loading  {
+  .grid-content > .empty {
     grid-column: 3 / 5
   }
 }

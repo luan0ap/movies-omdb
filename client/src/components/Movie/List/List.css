@@ -3,3 +3,7 @@
   flex-direction: column;
   align-items: center
 }
+
+.movies-list > .loading {
+  margin: 20px 0
+}
