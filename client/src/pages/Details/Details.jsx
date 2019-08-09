@@ -25,7 +25,31 @@ function Detail ({ match }) {
     setIsLiked(isLiked)
 
     get(imdbID, { plot: 'full' }).then((response) => {
-      setMovieData(response)
+      const {
+        Runtime = '',
+        Year = '',
+        Ratings = [],
+        Title = '',
+        Poster = '',
+        imdbRating = '',
+        Actors = '',
+        Genre = '',
+        Director = ''
+      } = response
+
+      const data = {
+        imdbRating: imdbRating === 'N/A' ? '0.0' : imdbRating,
+        runtime: Runtime,
+        year: Year,
+        title: Title,
+        poster: Poster,
+        rating: (Ratings.find(({ Source }) => Source === 'Internet Movie Database') || { Value: '0/0' }).Value,
+        actors: Actors.split(' '),
+        genres: Genre.split(' '),
+        directors: Director.split(' ')
+      }
+
+      setMovieData(data)
       setisLoading(false)
     })
   }, [setIsLiked, imdbID])
@@ -48,7 +72,7 @@ function Detail ({ match }) {
 
   const handleLikeMovie = () => {
     setIsLiked(!isLiked)
-    LikedMoviesStorage.has(imdbID) ? LikedMoviesStorage.remove(imdbID) : LikedMoviesStorage.add({ title: movieData.Title, imdbID })
+    LikedMoviesStorage.has(imdbID) ? LikedMoviesStorage.remove(imdbID) : LikedMoviesStorage.add({ title: movieData.title, imdbID })
   }
 
   return (
@@ -61,16 +85,16 @@ function Detail ({ match }) {
             </Link>
 
             <div className='movie-time'>
-              <span className='duration -separator_disc'>{movieData.Runtime}</span>
-              <span className='year -separator_disc'>{movieData.Year}</span>
+              <span className='duration -separator_disc'>{movieData.runtime}</span>
+              <span className='year -separator_disc'>{movieData.year}</span>
               <span className='right -separator_disc'>R</span>
             </div>
 
-            <h1 className='title'>{movieData.Title}</h1>
+            <h1 className='title'>{movieData.title}</h1>
 
             <div className='movie-extra'>
               <Chip customClasses={['extra']} icon={LogoImdbIcon} bgIcon='#ffa200' label={movieData.imdbRating} />
-              <Chip customClasses={['extra']} icon={LogoRottenTomatoes} bgIcon='#ff0026' label={movieData.Ratings[0].Value} />
+              <Chip customClasses={['extra']} icon={LogoRottenTomatoes} bgIcon='#ff0026' label={movieData.rating} />
               <Chip customClasses={['extra']} onClick={handleLikeMovie} {...likedMovieProps(isLiked)} />
             </div>
 
@@ -82,13 +106,13 @@ function Detail ({ match }) {
             </div>
 
             <div className='movie-members'>
-              <CardListLite title='Cast' list={movieData.Actors.split(',')} />
-              <CardListLite title='Genre' list={movieData.Genre.split(',')} />
-              <CardListLite title='Director' list={movieData.Director.split(',')} />
+              <CardListLite title='Cast' list={movieData.actors} />
+              <CardListLite title='Genre' list={movieData.genres} />
+              <CardListLite title='Director' list={movieData.directors} />
             </div>
           </article>
           <article className='movie-poster'>
-            <img className='poster' src={movieData.Poster} alt={`Poster from movie ${movieData.Title}`} />
+            <img className='poster' src={movieData.poster} alt={`Poster from movie ${movieData.title}`} />
           </article>
       </>
       }
