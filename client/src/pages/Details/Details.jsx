@@ -35,11 +35,11 @@ function Detail ({ match }) {
         Actors = '',
         Genre = '',
         Director = '',
-        Plot,
+        Plot
       } = response
 
       const data = {
-        imdbRating: imdbRating === 'N/A' ? '0.0' : imdbRating,
+        imdbRating: imdbRating === 'N/A' ? '0%' : `${Number(imdbRating) * 10}%`,
         runtime: Runtime,
         year: Year,
         title: Title,
