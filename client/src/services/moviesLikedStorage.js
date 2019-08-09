@@ -1,6 +1,6 @@
 import Storage from 'utils/localStorage'
 
-const moviesLikedStorage = Storage('@zup/moviesLiked')
+const moviesLikedStorage = Storage('@luan0ap/moviesLiked')
 
 const add = (movieInfo) => {
   const moviesLikedList = moviesLikedStorage.get()
