@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './CardListLite.css'
 
-function CardListLite ({ title, list = [] }) {
+function CardListLite ({ title, list }) {
   return (
     <div className='card-list'>
       <h4 className='title'>{ title }</h4>
@@ -13,6 +14,11 @@ function CardListLite ({ title, list = [] }) {
       </ul>
     </div>
   )
+}
+
+CardListLite.propTypes = {
+  title: PropTypes.string.isRequired,
+  list: PropTypes.arrayOf(PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]))
 }
 
 export default CardListLite

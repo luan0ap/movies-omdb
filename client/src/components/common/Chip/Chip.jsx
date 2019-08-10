@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './Chip.css'
 
-function Chip ({ bgIcon, bgLabel, icon, label, onClick, customClasses }) {
+function Chip ({ label, bgIcon = '', bgLabel = '', icon = '', onClick = () => {}, customClasses = [] }) {
   const styleBg = (color, borderSide) =>
     color ? { backgroundColor: color } : { border: '1px solid #fff', [borderSide]: 'none' }
 
@@ -19,6 +20,15 @@ function Chip ({ bgIcon, bgLabel, icon, label, onClick, customClasses }) {
       </div>
     </div>
   )
+}
+
+Chip.propTypes = {
+  bgIcon: PropTypes.string,
+  bgLabel: PropTypes.string,
+  icon: PropTypes.oneOfType([ PropTypes.element, PropTypes.string ]),
+  label: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ]).isRequired,
+  onClick: PropTypes.func,
+  customClasses: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default Chip

@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import './Grid.css'
 
 function Grid ({ children }) {
@@ -7,6 +9,10 @@ function Grid ({ children }) {
       {children}
     </div>
   )
+}
+
+Grid.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export default Grid

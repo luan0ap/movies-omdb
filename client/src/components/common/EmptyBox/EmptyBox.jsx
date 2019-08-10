@@ -1,9 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import IllustrationEmptyState from 'assets/illustrations/illustration-empty-state.png'
 import './EmptyBox.css'
 
-function EmptyBox ({ customClasses }) {
+function EmptyBox ({ customClasses = [] }) {
   return (
     <section className={`empty-card ${customClasses.join(' ')}`}>
       <img className='illustration' src={IllustrationEmptyState} alt='Illustration empty state' />
@@ -11,6 +12,10 @@ function EmptyBox ({ customClasses }) {
       <p className='offer'>Here's an offer you can't refuse</p>
     </section>
   )
+}
+
+EmptyBox.propTypes = {
+  customClasses: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default EmptyBox
