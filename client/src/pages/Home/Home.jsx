@@ -67,7 +67,7 @@ function Home () {
     setMoviesList([])
     setTotalResults(0)
     setHasError(false)
-    setMovieName(target.value)
+    setMovieName(String(target.value).trim())
   }
 
   const handleLikeMovie = (title, imdbID) => {
